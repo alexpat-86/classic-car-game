@@ -2,3 +2,10 @@ canvas {
     border: 1px solid black;
     background-color: gray;
 }
+
+#img {
+    position: relative;
+    width: 500px;
+    bottom:950px;
+    left: 400px;
+}
