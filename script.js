@@ -1,8 +1,8 @@
 var myGamePiece;
 
 function startGame() {
-    blocker = new component(40,80,"blue",300,0);
-    blockerb = new component(40,80,"yellow",70,0);
+    blocker = new component(80,140,"blue",300,0);
+    blockerb = new component(80,140,"yellow",70,0);
     rl = new component(40,80,"blue",300,0);
     rla = new component(40,80,"white",180,0);
     rlb = new component(40,80,"white",180,150);
@@ -10,7 +10,7 @@ function startGame() {
     rld = new component(40,80,"white",180,450);
     rle = new component(40,80,"white",180,600);
     rlf = new component(40,80,"white",180,750);
-    myGamePiece = new component(40, 80, "red", 70, 800);
+    myGamePiece = new component(80, 140, "red", 70, 750);
     
     myGameArea.start();
 }
@@ -74,19 +74,35 @@ function component(width, height, color, x, y) {
         }
         return crash;
       }
+      this.crashWithb = function(blockerb) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = blockerb.x;
+        var otherright = blockerb.x + (blockerb.width);
+        var othertop = blockerb.y;
+        var otherbottom = blockerb.y + (blockerb.height);
+        var crash = true;
+        if ((mybottom < othertop) ||
+        (mytop > otherbottom) ||
+        (myright < otherleft) ||
+        (myleft > otherright)) {
+          crash = false;
+        }
+        return crash;
+      }
 }
 
 function updateGameArea() {
-    if (myGamePiece.crashWith(blocker)) {
+    if (myGamePiece.crashWith(blocker) || myGamePiece.crashWithb(blockerb)) {
         myGameArea.stop();
       } else {
     myGameArea.clear();
     myGamePiece.speedX = 0;
     myGamePiece.speedY = 0;
-    if (myGameArea.key && myGameArea.key == 37) {myGamePiece.speedX = -4; }
-    if (myGameArea.key && myGameArea.key == 39) {myGamePiece.speedX = 4; }
-    if (myGameArea.key && myGameArea.key == 38) {myGamePiece.speedY = -4; }
-    if (myGameArea.key && myGameArea.key == 40) {myGamePiece.speedY = 4; }
+    if (myGameArea.key && myGameArea.key == 37) {myGamePiece.speedX = -6; }
+    if (myGameArea.key && myGameArea.key == 39) {myGamePiece.speedX = 6; }
     rla.update();
     rlb.update();
     rlc.update();
@@ -95,9 +111,13 @@ function updateGameArea() {
     rlf.update();
     myGamePiece.newPos();
     myGamePiece.update();
-    blocker.y += 5;
-    blockerb.y += 4;
+    let blockerspeed = 0;
+    blocker.y += blockerspeed;
+    let blockerspeedb = 0;
+    blockerb.y += blockerspeedb;
     if (blockerb.y > 900) {
+        score++;
+        scorebox.innerHTML = score;
         blockerb.y = -10;
         blockerb.x = Math.random() * (400 - 0);
     }
@@ -108,9 +128,9 @@ function updateGameArea() {
     blocker.update();
     blockerb.update();
 }
+
 }
 function moveup() {
-
     myGamePiece.speedY -= 2;
   }
   
@@ -126,3 +146,11 @@ function moveright() {
     myGamePiece.speedX += 2;
   }
 
+let score = 0;
+
+const scorebox = document.getElementById("score");
+
+
+function easy() {
+  blockerspeed = 5;
+}

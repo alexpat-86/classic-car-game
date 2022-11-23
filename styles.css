@@ -3,9 +3,46 @@ canvas {
     background-color: gray;
 }
 
-#img {
+#score {
     position: relative;
+    border: 1px solid black;
+    bottom: 500px;
+    width: 150px;
+    height: 100px;
+    left: 500px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+
+}
+
+#easy {
+    position: relative;
+    border: 1px solid black;
     width: 500px;
-    bottom:950px;
+    height: 100px;
+    bottom: 1000px;
     left: 400px;
+
+}
+
+
+#med {
+    position: relative;
+    border: 1px solid black;
+    width: 500px;
+    height: 100px;
+    bottom: 1000px;
+    left: 400px;
+
+}
+
+
+#hard {
+    position: relative;
+    border: 1px solid black;
+    width: 500px;
+    height: 100px;
+    bottom: 1000px;
+    left: 400px;
+
 }
