@@ -111,9 +111,7 @@ function updateGameArea() {
     rlf.update();
     myGamePiece.newPos();
     myGamePiece.update();
-    let blockerspeed = 0;
-    blocker.y += blockerspeed;
-    let blockerspeedb = 0;
+    blocker.y += blockerspeed;  
     blockerb.y += blockerspeedb;
     if (blockerb.y > 900) {
         score++;
@@ -150,7 +148,21 @@ let score = 0;
 
 const scorebox = document.getElementById("score");
 
+blockerspeed = 0;
+blockerspeedb = 0;
 
-function easy() {
-  blockerspeed = 5;
-}
+document.getElementById("easy").onclick = function() {
+  blockerspeed = 2;
+  blockerspeedb = 2;
+}  
+
+document.getElementById("med").onclick = function() {
+  blockerspeed = 4;
+  blockerspeedb = 4;
+}  
+
+document.getElementById("hard").onclick = function() {
+  blockerspeed = 6;
+  blockerspeedb = 6;
+}  
+

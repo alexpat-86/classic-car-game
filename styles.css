@@ -1,3 +1,8 @@
+* {
+    overflow: hidden;
+}
+
+
 canvas {
     border: 1px solid black;
     background-color: gray;
@@ -5,13 +10,12 @@ canvas {
 
 #score {
     position: relative;
-    border: 1px solid black;
-    bottom: 500px;
-    width: 150px;
+    bottom: 425px;
+    width: 80px;
     height: 100px;
     left: 500px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: larger;
+    font-size: x-large;
 
 }
 
@@ -44,5 +48,22 @@ canvas {
     height: 100px;
     bottom: 1000px;
     left: 400px;
+
+}
+
+#heading {
+    position: relative;
+    border: 1px solif black;
+    bottom: 1050px;
+    left: 450px;
+    font-family: sans-serif;
+}
+
+#scorepre {
+    position: relative;
+    bottom: 550px;
+    left: 420px;
+    font-family: sans-serif;
+    font-size: x-large;
 
 }
